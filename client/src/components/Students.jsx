@@ -17,7 +17,7 @@ const Students = () => {
   ];
 
   return (
-    <>
+    <div className="w-50 m-auto">
       <table className="table">
         <thead>
           <tr>
@@ -45,7 +45,7 @@ const Students = () => {
       <button className="btn btn-secondary">
         <Link to="/new-student">Add Student</Link>
       </button>
-    </>
+    </div>
   );
 };
 

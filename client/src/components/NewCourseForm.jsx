@@ -1,11 +1,32 @@
 import React from "react";
+import { useRef } from "react";
 
 const NewCourseForm = () => {
+  const courseCode = useRef(null);
+  const courseName = useRef(null);
+  const section = useRef(null);
+  const semester = useRef(null);
+
   return (
-    <form className="w-50 m-auto">
+    <form
+      className="w-50 m-auto"
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        const data = {
+          courseCode: courseCode.current.value,
+          courseName: courseName.current.value,
+          section: section.current.value,
+          semester: semester.current.value,
+        };
+
+        console.log(data);
+      }}
+    >
       <div className="form-group mb-3">
         <label htmlFor="courseCode">Course Code</label>
         <input
+          ref={courseCode}
           type="text"
           className="form-control"
           id="courseCode"
@@ -16,6 +37,7 @@ const NewCourseForm = () => {
       <div className="form-group mb-3">
         <label htmlFor="courseName">Course Name</label>
         <input
+          ref={courseName}
           type="text"
           className="form-control"
           id="courseName"
@@ -26,6 +48,7 @@ const NewCourseForm = () => {
       <div className="form-group mb-3">
         <label htmlFor="section">Section</label>
         <input
+          ref={section}
           type="text"
           className="form-control"
           id="section"
@@ -36,6 +59,7 @@ const NewCourseForm = () => {
       <div className="form-group mb-3">
         <label htmlFor="semester">Semester</label>
         <input
+          ref={semester}
           type="text"
           className="form-control"
           id="semester"

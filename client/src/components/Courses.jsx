@@ -8,7 +8,7 @@ const Courses = () => {
   ];
 
   return (
-    <>
+    <div className="w-50 m-auto">
       <table className="table">
         <thead>
           <tr>
@@ -36,7 +36,7 @@ const Courses = () => {
       <button className="btn btn-secondary">
         <a href="/new-course">Add Course</a>
       </button>
-    </>
+    </div>
   );
 };
 
