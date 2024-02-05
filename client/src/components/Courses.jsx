@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
   const courses = [
@@ -33,9 +33,9 @@ const Courses = () => {
         </tbody>
       </table>
 
-      <button className="btn btn-secondary">
-        <a href="/new-course">Add Course</a>
-      </button>
+      <Link className="btn btn-primary" to="/new-course">
+        Add Course
+      </Link>
     </div>
   );
 };

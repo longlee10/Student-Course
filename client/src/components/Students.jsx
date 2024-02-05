@@ -42,9 +42,9 @@ const Students = () => {
         </tbody>
       </table>
 
-      <button className="btn btn-secondary">
-        <Link to="/new-student">Add Student</Link>
-      </button>
+      <Link className="btn btn-primary" to="/new-student">
+        Add Student
+      </Link>
     </div>
   );
 };
