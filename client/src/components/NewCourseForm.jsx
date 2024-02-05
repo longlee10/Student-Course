@@ -2,39 +2,47 @@ import React from "react";
 
 const NewCourseForm = () => {
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="exampleInputEmail1">Email address</label>
+    <form className="w-50 m-auto">
+      <div className="form-group mb-3">
+        <label htmlFor="courseCode">Course Code</label>
         <input
-          type="email"
+          type="text"
           className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
+          id="courseCode"
+          placeholder="Enter course code"
         />
-        <small id="emailHelp" className="form-text text-muted">
-          We'll never share your email with anyone else.
-        </small>
       </div>
-      <div className="form-group">
-        <label htmlFor="exampleInputPassword1">Password</label>
+
+      <div className="form-group mb-3">
+        <label htmlFor="courseName">Course Name</label>
         <input
-          type="password"
+          type="text"
           className="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
+          id="courseName"
+          placeholder="Enter course name"
         />
       </div>
-      <div className="form-check">
+
+      <div className="form-group mb-3">
+        <label htmlFor="section">Section</label>
         <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
+          type="text"
+          className="form-control"
+          id="section"
+          placeholder="Enter section"
         />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
-        </label>
       </div>
+
+      <div className="form-group mb-3">
+        <label htmlFor="semester">Semester</label>
+        <input
+          type="text"
+          className="form-control"
+          id="semester"
+          placeholder="Enter semester"
+        />
+      </div>
+
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
