@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewStudentForm = () => {
+const NewCourseForm = () => {
   return (
     <form>
       <div className="form-group">
@@ -42,4 +42,4 @@ const NewStudentForm = () => {
   );
 };
 
-export default NewStudentForm;
+export default NewCourseForm;

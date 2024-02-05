@@ -4,6 +4,8 @@ import Courses from "./components/Courses";
 import Student from "./components/Students";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import NewCourseForm from "./components/NewCourseForm";
+import NewStudentForm from "./components/NewStudentForm";
 
 function App() {
   return (
@@ -11,13 +13,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<Courses />} />
         <Route path="/students" element={<Student />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/new-course" element={<NewCourseForm />} />
+        <Route path="/new-student" element={<NewStudentForm />} />
       </Routes>
-
-      <div>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </div>
     </Router>
   );
 }

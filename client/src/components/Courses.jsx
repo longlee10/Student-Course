@@ -27,13 +27,15 @@ const Courses = () => {
   return (
     <div>
       {courses.map((course) => (
-        <div key={courses.id}>
-          {course.title}{" "}
+        <div key={course.id}>
+          {course.title}
           <button onClick={() => deleteCourse(course.id)}>Delete</button>
           <button onClick={() => updateCourse(course.id)}>Update</button>
         </div>
       ))}
-      <button onClick={addCourse}>Add</button>
+      <button>
+        <a href="/new-course">Add Course</a>
+      </button>
     </div>
   );
 };
