@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef } from "react";
+import axios from "axios";
 
 const NewCourseForm = () => {
   const courseCode = useRef(null);
@@ -10,15 +11,17 @@ const NewCourseForm = () => {
   return (
     <form
       className="w-50 m-auto"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
 
         const data = {
-          courseCode: courseCode.current.value,
-          courseName: courseName.current.value,
+          code: courseCode.current.value,
+          title: courseName.current.value,
           section: section.current.value,
           semester: semester.current.value,
         };
+
+        await axios.post("http://localhost:5000/api/courses", data);
 
         console.log(data);
       }}

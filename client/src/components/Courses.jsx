@@ -17,19 +17,23 @@ const Courses = () => {
       <table className="table">
         <thead>
           <tr>
+            <th>Course Code</th>
             <th>Course Name</th>
+            <th>Section</th>
+            <th>Semester</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {courses.map((course) => (
-            <tr
-              key={course.id}
-              className="d-flex flex-row justify-content-between"
-            >
+            <tr key={course._id}>
+              <td>{course.code}</td>
               <td>{course.title}</td>
+              <td>{course.section}</td>
+              <td>{course.semester}</td>
               <td>
                 <div>
-                  <button className="btn btn-danger mx-3">Delete</button>
+                  <button className="btn btn-danger me-3">Delete</button>
                   <button className="btn btn-success">Update</button>
                 </div>
               </td>
