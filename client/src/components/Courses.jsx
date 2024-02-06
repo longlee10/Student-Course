@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Courses = () => {
-  const courses = [
-    { id: 1, title: "Course 1" },
-    { id: 2, title: "Course 2" },
-    { id: 3, title: "Course 3" },
-  ];
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/courses")
+      .then((res) => setCourses(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="w-50 m-auto">
