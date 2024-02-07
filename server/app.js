@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const port = 5000;
 const courses = require("./routes/courses");
+const students = require("./routes/students");
 const cors = require("cors");
 
 // Connect to MongoDB
@@ -21,6 +22,7 @@ app.use(cors());
 
 // routes
 app.use("/api/courses", courses);
+app.use("/api/students", students);
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
