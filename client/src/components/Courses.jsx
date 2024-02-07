@@ -33,7 +33,6 @@ const Courses = () => {
               <td>{course.semester}</td>
               <td>
                 <div>
-                  <Link className="btn btn-danger me-3">Delete</Link>
                   <Link
                     to={`/courses/${course._id}`}
                     className="btn btn-success"

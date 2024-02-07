@@ -21,22 +21,13 @@ const Students = () => {
       <table className="table">
         <thead>
           <tr>
-            <th>Course Name</th>
+            <th>First Name</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
-            <tr
-              key={student.id}
-              className="d-flex flex-row justify-content-between"
-            >
+            <tr key={student.id}>
               <td>{student.name}</td>
-              <td>
-                <div>
-                  <button className="btn btn-danger mx-3">Delete</button>
-                  <button className="btn btn-success">Update</button>
-                </div>
-              </td>
             </tr>
           ))}
         </tbody>
