@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import NewCourseForm from "./components/NewCourseForm";
 import NewStudentForm from "./components/NewStudentForm";
 import Course from "./components/Course";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         </Route>
         <Route path="/new-course" element={<NewCourseForm />} />
         <Route path="/new-student" element={<NewStudentForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

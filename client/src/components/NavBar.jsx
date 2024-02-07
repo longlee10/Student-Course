@@ -19,6 +19,11 @@ const NavBar = () => {
             Courses
           </a>
         </li>
+        <li className="nav-item">
+          <a className="nav-link text-light" href="login">
+            Login
+          </a>
+        </li>
       </ul>
     </nav>
   );
