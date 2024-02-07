@@ -28,4 +28,21 @@ router.post("/", async (req, res) => {
   res.send(await course.save());
 });
 
+router.put("/:id", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const course = await Course.findByIdAndUpdate(req.params.id, {
+    code: req.body.code,
+    title: req.body.title,
+    section: req.body.section,
+    semester: req.body.semester,
+  });
+
+  if (!course)
+    return res.status(404).send("The course with the given ID was not found.");
+
+  res.send(course);
+});
+
 module.exports = router;

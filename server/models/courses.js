@@ -13,7 +13,7 @@ function validateCourse(course) {
     code: Joi.string().min(7).max(50).required(),
     title: Joi.string().min(5).max(50).required(),
     section: Joi.string().min(3).max(10).required(),
-    semester: Joi.string().min(5).max(20).required(),
+    semester: Joi.string().min(3).max(20).required(),
   };
 
   return Joi.validate(course, schema);

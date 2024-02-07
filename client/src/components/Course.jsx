@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
@@ -11,6 +11,9 @@ const Course = () => {
 
   let { id } = useParams();
   const [course, setCourse] = useState(null);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -41,7 +44,9 @@ const Course = () => {
           semester: semester.current.value,
         };
 
-        await axios.post("http://localhost:5000/api/courses", data);
+        await axios.put(`http://localhost:5000/api/courses/${id}`, data);
+
+        navigate("/courses");
       }}
     >
       <div className="form-group mb-3">
@@ -52,7 +57,7 @@ const Course = () => {
           className="form-control"
           id="courseCode"
           placeholder="Enter course code"
-          value={course.code}
+          defaultValue={course.code}
           required
         />
       </div>
@@ -65,7 +70,7 @@ const Course = () => {
           className="form-control"
           id="courseName"
           placeholder="Enter course name"
-          value={course.title}
+          defaultValue={course.title}
           required
         />
       </div>
@@ -78,7 +83,7 @@ const Course = () => {
           className="form-control"
           id="section"
           placeholder="Enter section"
-          value={course.section}
+          defaultValue={course.section}
           required
         />
       </div>
@@ -91,7 +96,7 @@ const Course = () => {
           className="form-control"
           id="semester"
           placeholder="Enter semester"
-          value={course.semester}
+          defaultValue={course.semester}
           required
         />
       </div>

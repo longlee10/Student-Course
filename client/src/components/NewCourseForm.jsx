@@ -1,12 +1,15 @@
 import React from "react";
 import { useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewCourseForm = () => {
   const courseCode = useRef(null);
   const courseName = useRef(null);
   const section = useRef(null);
   const semester = useRef(null);
+
+  const navigate = useNavigate();
 
   return (
     <form
@@ -22,6 +25,8 @@ const NewCourseForm = () => {
         };
 
         await axios.post("http://localhost:5000/api/courses", data);
+
+        navigate("/courses");
       }}
     >
       <div className="form-group mb-3">
