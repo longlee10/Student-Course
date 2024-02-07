@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Course } = require("../models/courses");
+const { Course, validate } = require("../models/courses");
 
 router.get("/", async (req, res) => {
   const courses = await Course.find();
@@ -8,6 +8,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
   const course = new Course({
     code: req.body.code,
     title: req.body.title,

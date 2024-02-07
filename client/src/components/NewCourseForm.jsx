@@ -34,6 +34,7 @@ const NewCourseForm = () => {
           className="form-control"
           id="courseCode"
           placeholder="Enter course code"
+          required
         />
       </div>
 
@@ -45,6 +46,7 @@ const NewCourseForm = () => {
           className="form-control"
           id="courseName"
           placeholder="Enter course name"
+          required
         />
       </div>
 
@@ -56,6 +58,7 @@ const NewCourseForm = () => {
           className="form-control"
           id="section"
           placeholder="Enter section"
+          required
         />
       </div>
 
@@ -67,6 +70,7 @@ const NewCourseForm = () => {
           className="form-control"
           id="semester"
           placeholder="Enter semester"
+          required
         />
       </div>
 
