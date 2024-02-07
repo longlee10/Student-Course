@@ -35,3 +35,4 @@ const validateStudent = (student) => {
 
 exports.Student = Student;
 exports.validate = validateStudent;
+exports.studentSchema = studentSchema;

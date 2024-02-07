@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const { studentSchema } = require("./students");
 
 const courseSchema = new mongoose.Schema({
   code: { type: String, required: true },
   title: { type: String, required: true },
   section: { type: String, required: true },
   semester: { type: String, required: true },
+  students: { type: [studentSchema] },
 });
 
 function validateCourse(course) {

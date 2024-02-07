@@ -1,5 +1,7 @@
 import React from "react";
 import { useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewStudentForm = () => {
   const studentNumber = useRef(null);
@@ -12,25 +14,29 @@ const NewStudentForm = () => {
   const phone = useRef(null);
   const program = useRef(null);
 
+  const navigate = useNavigate();
+
   return (
     <form
       className="w-50 m-auto"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
 
         const data = {
           studentNumber: studentNumber.current.value,
-          fName: fName.current.value,
-          lName: lName.current.value,
+          firstName: fName.current.value,
+          lastName: lName.current.value,
           email: email.current.value,
           password: password.current.value,
           address: address.current.value,
           city: city.current.value,
-          phone: phone.current.value,
+          phoneNumber: phone.current.value,
           program: program.current.value,
         };
 
-        console.log(data);
+        await axios.post("http://localhost:5000/api/students", data);
+
+        navigate("/students");
       }}
     >
       <div className="form-group mb-3">
@@ -41,6 +47,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="studentNumber"
           placeholder="Enter student number"
+          required
         />
       </div>
 
@@ -52,6 +59,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="fName"
           placeholder="Enter first name"
+          required
         />
       </div>
 
@@ -63,6 +71,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="lName"
           placeholder="Enter last name"
+          required
         />
       </div>
 
@@ -74,6 +83,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="email"
           placeholder="Enter email"
+          required
         />
       </div>
 
@@ -85,6 +95,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="password"
           placeholder="Password"
+          required
         />
       </div>
 
@@ -96,6 +107,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="address"
           placeholder="Enter address"
+          required
         />
       </div>
 
@@ -107,6 +119,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="city"
           placeholder="Enter City"
+          required
         />
       </div>
 
@@ -118,6 +131,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="phone"
           placeholder="Enter phone number"
+          required
         />
       </div>
 
@@ -129,6 +143,7 @@ const NewStudentForm = () => {
           className="form-control"
           id="program"
           placeholder="Enter program"
+          required
         />
       </div>
 
