@@ -33,8 +33,13 @@ const Courses = () => {
               <td>{course.semester}</td>
               <td>
                 <div>
-                  <button className="btn btn-danger me-3">Delete</button>
-                  <button className="btn btn-success">Update</button>
+                  <Link className="btn btn-danger me-3">Delete</Link>
+                  <Link
+                    to={`/courses/${course._id}`}
+                    className="btn btn-success"
+                  >
+                    Update
+                  </Link>
                 </div>
               </td>
             </tr>

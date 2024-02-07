@@ -7,6 +7,13 @@ router.get("/", async (req, res) => {
   res.send(courses).status(200);
 });
 
+router.get("/:id", async (req, res) => {
+  const course = await Course.findById(req.params.id);
+  if (!course)
+    return res.status(404).send("The course with the given ID was not found.");
+  res.send(course);
+});
+
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
