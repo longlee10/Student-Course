@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-const Course = () => {
+const CourseUpdateForm = () => {
   const courseCode = useRef(null);
   const courseName = useRef(null);
   const section = useRef(null);
@@ -106,4 +106,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default CourseUpdateForm;
