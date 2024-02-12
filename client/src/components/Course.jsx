@@ -17,9 +17,7 @@ const Course = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/courses/${id}`
-        );
+        const response = await axios.get(`http://localhost:5000/courses/${id}`);
         setCourse(response.data); // Set the course data to the state
       } catch (error) {
         console.error("Error fetching course:", error);
@@ -44,7 +42,7 @@ const Course = () => {
           semester: semester.current.value,
         };
 
-        await axios.put(`http://localhost:5000/api/courses/${id}`, data);
+        await axios.put(`http://localhost:5000/courses/${id}`, data);
 
         navigate("/courses");
       }}

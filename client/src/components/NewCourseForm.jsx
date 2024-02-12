@@ -24,7 +24,7 @@ const NewCourseForm = () => {
           semester: semester.current.value,
         };
 
-        await axios.post("http://localhost:5000/api/courses", data);
+        await axios.post("http://localhost:5000/courses", data);
 
         navigate("/courses");
       }}

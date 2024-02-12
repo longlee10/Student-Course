@@ -34,7 +34,7 @@ const NewStudentForm = () => {
           program: program.current.value,
         };
 
-        await axios.post("http://localhost:5000/api/students", data);
+        await axios.post("http://localhost:5000/students", data);
 
         navigate("/students");
       }}

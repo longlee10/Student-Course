@@ -1,8 +1,11 @@
 import { useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const usernameRef = useRef();
+  const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
   return (
     <form
@@ -11,20 +14,22 @@ const Login = () => {
         e.preventDefault();
 
         const user = {
-          username: usernameRef.current.value,
+          email: emailRef.current.value,
           password: passwordRef.current.value,
         };
 
-        console.log(user);
+        await axios.post("http://localhost:5000/auth", user);
+
+        navigate("/courses");
       }}
     >
       <div className="form-group mb-3">
-        <label htmlFor="username">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           className="form-control"
-          id="username"
-          ref={usernameRef}
+          id="email"
+          ref={emailRef}
         />
       </div>
       <div className="form-group mb-3">
