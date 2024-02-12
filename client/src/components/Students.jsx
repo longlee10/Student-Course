@@ -26,6 +26,7 @@ const Students = () => {
             <th>Email</th>
             <th>Address</th>
             <th>Phone Number</th>
+            <th>View Student Details</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +38,9 @@ const Students = () => {
               <td>{student.email}</td>
               <td>{`${student.address}, ${student.city}`}</td>
               <td>{student.phoneNumber}</td>
+              <td>
+                <Link to={`/students/${student._id}`}>View Details</Link>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -8,6 +8,13 @@ router.get("/", async (req, res) => {
   res.send(students).status(200);
 });
 
+router.get("/:id", async (req, res) => {
+  const student = await Student.findById(req.params.id);
+  if (!student)
+    return res.status(404).send("The student with the given ID was not found.");
+  res.send(student);
+});
+
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -27,6 +34,7 @@ router.post("/", async (req, res) => {
     address: req.body.address,
     city: req.body.city,
     phoneNumber: req.body.phoneNumber,
+    coursesTaken: req.body.coursesTaken,
   });
 
   const salt = await bcrypt.genSalt(10);
