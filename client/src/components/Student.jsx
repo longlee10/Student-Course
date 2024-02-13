@@ -4,7 +4,6 @@ import axios from "axios";
 
 const Student = () => {
   const [student, setStudent] = useState(null);
-  const [coursesTaken, setCoursesTaken] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,13 +14,6 @@ const Student = () => {
         );
         console.log(response.data);
         setStudent(response.data); // Set the course data to the state
-
-        // Fetch the courses taken by the student
-        const courses = await axios.get(
-          `http://localhost:5000/courses/${response.data.coursesTaken[0]}`
-        );
-        console.log(courses.data);
-        setCoursesTaken(courses.data);
       } catch (error) {
         console.error("Error fetching course:", error);
       }
@@ -45,7 +37,6 @@ const Student = () => {
       <p>
         Address: {student.address} {student.city}
       </p>
-      <p>Courses taken: {coursesTaken.code}</p>
     </div>
   );
 };
