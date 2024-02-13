@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 
 const Student = () => {
   const [student, setStudent] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +15,7 @@ const Student = () => {
         const response = await axios.get(
           `http://localhost:5000/students/${id}`
         );
-        console.log(response.data);
+
         setStudent(response.data); // Set the course data to the state
       } catch (error) {
         console.error("Error fetching course:", error);
@@ -22,7 +25,7 @@ const Student = () => {
     fetchData(); // Call the fetchCourse function
   }, []);
 
-  if (!student) return <div>Student does not exist.</div>;
+  if (!student) return null;
 
   return (
     <div className="w-75 m-auto">

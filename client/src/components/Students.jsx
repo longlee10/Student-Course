@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 
 const Students = () => {
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/students")
@@ -12,8 +16,11 @@ const Students = () => {
       })
       .catch((err) => {
         console.log(err);
+        navigate("/login");
       });
   }, []);
+
+  if (!students) return null;
 
   return (
     <div className="w-75 m-auto">

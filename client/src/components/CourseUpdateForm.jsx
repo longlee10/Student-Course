@@ -18,7 +18,8 @@ const CourseUpdateForm = () => {
     const fetchCourse = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/courses/${id}`);
-        setCourse(response.data); // Set the course data to the state
+        setCourse(response.data.course); // Set the course data to the state
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching course:", error);
       }

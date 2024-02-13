@@ -28,13 +28,16 @@ const Courses = () => {
           {courses.map((course) => (
             <tr key={course._id}>
               <td>{course.code}</td>
-              <td>{course.title}</td>
+
+              <td>
+                <Link to={`/courses/${course._id}`}>{course.title}</Link>
+              </td>
               <td>{course.section}</td>
               <td>{course.semester}</td>
               <td>
                 <div>
                   <Link
-                    to={`/courses/${course._id}`}
+                    to={`/courses/${course._id}/update`}
                     className="btn btn-success"
                   >
                     Update

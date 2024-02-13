@@ -9,6 +9,7 @@ import NewStudentForm from "./components/NewStudentForm";
 import CourseUpdateForm from "./components/CourseUpdateForm";
 import Login from "./components/Login";
 import Student from "./components/Student";
+import Course from "./components/Course";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses">
           <Route element={<Courses />} />
-          <Route path=":id" element={<CourseUpdateForm />} />
+          <Route path=":id" element={<Course />} />
+          <Route path=":id/update" element={<CourseUpdateForm />} />
         </Route>
         <Route path="/new-course" element={<NewCourseForm />} />
         <Route path="/new-student" element={<NewStudentForm />} />

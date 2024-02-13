@@ -1,4 +1,5 @@
 const { Course, validate } = require("../models/courses.server.model");
+const { Student } = require("../models/students.server.model");
 
 exports.getCourses = async (req, res) => {
   const courses = await Course.find();
@@ -9,7 +10,14 @@ exports.getCourse = async (req, res) => {
   const course = await Course.findById(req.params.id);
   if (!course)
     return res.status(404).send("The course with the given ID was not found.");
-  res.send(course);
+
+  const students = await Promise.all(
+    course.students.map(async (studentId) => {
+      return await Student.findById(studentId);
+    })
+  );
+
+  res.send({ course, students });
 };
 
 exports.createCourse = async (req, res) => {
@@ -21,6 +29,7 @@ exports.createCourse = async (req, res) => {
     title: req.body.title,
     section: req.body.section,
     semester: req.body.semester,
+    students: req.body.students,
   });
 
   res.send(await course.save());
