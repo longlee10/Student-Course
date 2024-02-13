@@ -16,6 +16,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
+    "joi": "^13.1.0",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^2.3.10",
     "mongoose": "^5.13.14",
