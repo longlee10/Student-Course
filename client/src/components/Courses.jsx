@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Courses = () => {
+const Courses = ({ register }) => {
   const [courses, setCourses] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     axios
@@ -12,8 +13,12 @@ const Courses = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleRegister = (courseId) => {
+    register(courseId);
+  };
+
   return (
-    <div className="w-50 m-auto">
+    <div className="">
       <table className="table">
         <thead>
           <tr>
@@ -38,10 +43,19 @@ const Courses = () => {
                 <div>
                   <Link
                     to={`/courses/${course._id}/update`}
-                    className="btn btn-success"
+                    className="btn btn-success me-3"
                   >
                     Update
                   </Link>
+
+                  {id && (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleRegister(course._id)}
+                    >
+                      Register
+                    </button>
+                  )}
                 </div>
               </td>
             </tr>

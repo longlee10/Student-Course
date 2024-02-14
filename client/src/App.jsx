@@ -10,6 +10,7 @@ import CourseUpdateForm from "./components/CourseUpdateForm";
 import Login from "./components/Login";
 import Student from "./components/Student";
 import Course from "./components/Course";
+import CourseRegistration from "./components/CourseRegistration";
 
 function App() {
   return (
@@ -17,14 +18,13 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/students" element={<Students />} />
         <Route path="/students">
-          <Route element={<Students />} />
+          <Route path="" element={<Students />} />
           <Route path=":id" element={<Student />} />
+          <Route path=":id/register" element={<CourseRegistration />} />
         </Route>
-        <Route path="/courses" element={<Courses />} />
         <Route path="/courses">
-          <Route element={<Courses />} />
+          <Route path="" element={<Courses />} />
           <Route path=":id" element={<Course />} />
           <Route path=":id/update" element={<CourseUpdateForm />} />
         </Route>

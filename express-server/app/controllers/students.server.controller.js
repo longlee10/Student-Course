@@ -51,7 +51,7 @@ exports.createStudent = async (req, res) => {
 
 exports.dropCourse = async (req, res) => {
   let student = await Student.findOne({ email: req.body.email });
-  console.log(student);
+
   if (!student)
     return res.status(404).send("The student with the given ID was not found.");
 
@@ -65,4 +65,20 @@ exports.dropCourse = async (req, res) => {
       res.send(result);
     }
   );
+};
+
+exports.addCourse = async (req, res) => {
+  let student = await Student.findOne({ email: req.body.email });
+  if (!student)
+    return res.status(404).send("The student with the given ID was not found.");
+
+  console.log(student);
+
+  console.log(req.body.course);
+
+  const course = await Course.findOne({ _id: req.body.course });
+  console.log(course);
+
+  await student.coursesTaken.push(req.body.course);
+  res.send(await student.save());
 };

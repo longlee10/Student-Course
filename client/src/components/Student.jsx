@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Courses from "./Courses";
 import Login from "./Login";
 
 const Student = () => {
   const [student, setStudent] = useState(null);
-  const [courses, setCourses] = useState([]);
+  const [coursesTaken, setCoursesTaken] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const Student = () => {
         );
 
         setStudent(response.data.student); // Set the course data to the state
-        setCourses(response.data.coursesTaken);
+        setCoursesTaken(response.data.coursesTaken);
       } catch (error) {
         console.error("Error fetching course:", error);
       }
@@ -43,7 +44,7 @@ const Student = () => {
         Address: {student.address} {student.city}
       </p>
 
-      {courses.length > 0 && (
+      {coursesTaken.length > 0 && (
         <>
           <p>My Courses:</p>
           <table className="table">
@@ -57,7 +58,7 @@ const Student = () => {
               </tr>
             </thead>
             <tbody>
-              {courses.map((course) => (
+              {coursesTaken.map((course) => (
                 <tr key={course._id}>
                   <td>{course.code}</td>
                   <td>{course.title}</td>
@@ -66,7 +67,9 @@ const Student = () => {
                   <td>
                     <button
                       onClick={() => {
-                        setCourses(courses.filter((c) => c._id !== course._id));
+                        setCoursesTaken(
+                          coursesTaken.filter((c) => c._id !== course._id)
+                        );
                         axios
                           .post(`http://localhost:5000/students/${id}`, {
                             email: student.email,
@@ -87,6 +90,10 @@ const Student = () => {
           </table>
         </>
       )}
+
+      <Link className="btn btn-primary" to={`/students/${id}/register`}>
+        Register Courses
+      </Link>
     </div>
   );
 };
