@@ -1,4 +1,5 @@
 const { Student, validate } = require("../models/students.server.model");
+const { Course } = require("../models/courses.server.model");
 const bcrypt = require("bcrypt");
 
 exports.getStudents = async (req, res) => {
@@ -10,7 +11,14 @@ exports.getStudent = async (req, res) => {
   const student = await Student.findById(req.params.id);
   if (!student)
     return res.status(404).send("The student with the given ID was not found.");
-  res.send(student);
+
+  const coursesTaken = await Promise.all(
+    student.coursesTaken.map(async (courseId) => {
+      return await Course.findById(courseId);
+    })
+  );
+
+  res.send({ student, coursesTaken });
 };
 
 exports.createStudent = async (req, res) => {
@@ -39,4 +47,22 @@ exports.createStudent = async (req, res) => {
   student.password = await bcrypt.hash(student.password, salt);
 
   res.send(await student.save());
+};
+
+exports.dropCourse = async (req, res) => {
+  let student = await Student.findOne({ email: req.body.email });
+  console.log(student);
+  if (!student)
+    return res.status(404).send("The student with the given ID was not found.");
+
+  Student.updateOne(
+    { email: req.body.email },
+    { $pull: { coursesTaken: req.body.courseId } },
+    function (err, result) {
+      if (err) {
+        res.send(err);
+      }
+      res.send(result);
+    }
+  );
 };

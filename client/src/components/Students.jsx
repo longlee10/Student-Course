@@ -46,7 +46,12 @@ const Students = () => {
               <td>{`${student.address}, ${student.city}`}</td>
               <td>{student.phoneNumber}</td>
               <td>
-                <Link to={`/students/${student._id}`}>View Details</Link>
+                <Link
+                  className="btn btn-primary"
+                  to={`/students/${student._id}`}
+                >
+                  View Details
+                </Link>
               </td>
             </tr>
           ))}

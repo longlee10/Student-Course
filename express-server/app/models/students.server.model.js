@@ -11,6 +11,7 @@ const studentSchema = new mongoose.Schema({
   address: { type: String, required: true },
   city: { type: String, required: true },
   phoneNumber: { type: String, required: true },
+  coursesTaken: { type: [String] },
 });
 
 const Student = mongoose.model("Student", studentSchema);
@@ -26,6 +27,7 @@ const validateStudent = (student) => {
     address: Joi.string().min(5).max(255).required(),
     city: Joi.string().min(3).max(50).required(),
     phoneNumber: Joi.string().min(10).max(15).required(),
+    coursesTaken: Joi.array().items(Joi.string().min(3).max(50)),
   };
 
   return Joi.validate(student, schema);
