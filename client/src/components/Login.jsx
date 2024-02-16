@@ -10,7 +10,7 @@ function App() {
   //store input field data, user name and password
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const apiUrl = "/api/signin";
+  const apiUrl = "http://localhost:5000/signin";
   //send username and password to the server
   // for initial authentication
   const authenticateUser = async () => {
@@ -18,11 +18,12 @@ function App() {
     console.log(username);
     try {
       //make a get request to /authenticate end-point on the server
-      const loginData = { auth: { username, password } };
+      const loginData = { username, password };
       //call api
       const res = await axios.post(apiUrl, loginData);
       console.log(res.data.auth);
       console.log(res.data.screen);
+      console.log(res.data);
       //process the response
       if (res.data.screen !== undefined) {
         setScreen(res.data.screen);
@@ -40,7 +41,7 @@ function App() {
       console.log("--- in readCookie function ---");
 
       //
-      const res = await axios.get("/api/read_cookie");
+      const res = await axios.get("/read_cookie");
       //
       if (res.data.screen !== undefined) {
         setScreen(res.data.screen);

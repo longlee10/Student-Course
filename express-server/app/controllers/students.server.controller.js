@@ -77,7 +77,11 @@ exports.addCourse = async (req, res) => {
   console.log(req.body.course);
 
   const course = await Course.findOne({ _id: req.body.course });
-  console.log(course);
+  console.log("id: ", req.params.id);
+
+  // add student to course
+  course.students.push(req.params.id);
+  await course.save();
 
   await student.coursesTaken.push(req.body.course);
   res.send(await student.save());
