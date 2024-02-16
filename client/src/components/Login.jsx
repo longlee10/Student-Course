@@ -62,7 +62,7 @@ function App() {
     <div className="App">
       {screen === "auth" ? (
         <div>
-          <Form>
+          <Form className="w-75 m-auto">
             <Form.Group size="lg">
               <Form.Label>User Name</Form.Label>
               <Form.Control
@@ -86,6 +86,7 @@ function App() {
 
             <Button
               size="lg"
+              className="mt-3"
               variant="primary"
               type="Button"
               onClick={authenticateUser}

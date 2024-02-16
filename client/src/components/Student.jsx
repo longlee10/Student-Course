@@ -79,7 +79,7 @@ const Student = () => {
                             console.error("Error dropping course:", err)
                           );
                       }}
-                      className="btn btn-danger"
+                      className="btn btn-danger me-3"
                     >
                       Drop
                     </button>

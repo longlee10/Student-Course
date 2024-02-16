@@ -26,7 +26,7 @@ const Course = () => {
   if (!course) return null;
 
   return (
-    <div>
+    <div className="w-75 m-auto">
       <h1>Course Details</h1>
       <p>Course code: {course.code}</p>
       <p>Course title: {course.title}</p>
@@ -34,13 +34,19 @@ const Course = () => {
       <p>Semester: {course.semester}</p>
 
       <strong>Student enrolled: </strong>
-      {student.map((student) => (
-        <div key={student._id}>
-          <div>
-            Student name: {student.firstName} {student.lastName}
-          </div>
-        </div>
-      ))}
+      {student.length > 0 ? (
+        <>
+          {student.map((student) => (
+            <div key={student._id}>
+              <div>
+                Student name: {student.firstName} {student.lastName}
+              </div>
+            </div>
+          ))}
+        </>
+      ) : (
+        <p>No student enrolled in this course.</p>
+      )}
     </div>
   );
 };

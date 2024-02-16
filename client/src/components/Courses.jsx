@@ -37,7 +37,7 @@ const Courses = ({ register, filteredCourses }) => {
   };
 
   return (
-    <div className="">
+    <div className="w-75 m-auto">
       {courses.length > 0 ? (
         <>
           <table className="table">
